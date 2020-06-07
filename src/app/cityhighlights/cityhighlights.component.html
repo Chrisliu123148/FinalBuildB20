@@ -1,0 +1,184 @@
+<div class="include_category"     style="background-image: url('../../assets/Cityhighlights/cityhighlight1.jpg');background-size: cover;background-attachment: fixed;height: 500px;">
+
+  <div class="text-align" >
+    <div class="row" ><br/><br/><br/><br/><br/><br/><br/></div>
+    <div class="row d-flex justify-content-center" >
+
+      <!-- <div class="col-md-8" > -->
+        <select [(ngModel)]="searchText" aria-placeholder="Select a Category"
+          style="float:inline-start;width: 40%;height: 50px;border-radius: 5px;font-size:large; font-family: Arial, Helvetica, sans-serif;">
+          <option value="" disabled selected>Select a Category</option>
+          <option *ngFor="let quo of quote" [value]="quo" style="font-size: larger;">{{ quo }}</option>
+        </select> 
+      
+    </div>
+
+    <br/>
+    
+    <div class="row d-flex justify-content-center">
+    <button
+      style="height: 50px; width: 100px;font-size: x-large;font-weight: bold;margin-left: 5px;border-radius: 5px;background-color: paleturquoise;"
+      (click)="reset()">Reset</button></div>
+
+    <!-- </div> -->
+  </div>
+
+</div>
+
+
+
+<!-- <div class="agm-map" style="" *ngIf="searchText">
+
+
+  <agm-map style="width: 781px;height:395px;" [latitude]="latitude" [longitude]="longitude">
+    <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+      <agm-marker *ngFor="let quote of quotes | filter:searchText" [title]="quote.venue_address" [latitude]="quote.Y" [longitude]="quote.X">
+        <agm-info-window #infowindow>
+          <strong>{{ quote.venue_name }}</strong>
+        </agm-info-window>
+      </agm-marker>
+    </agm-marker-cluster>
+  </agm-map>
+</div> -->
+
+<div id=root>
+    <div class="container">
+      <div class="row">
+        <h1 style="font-family: Arial; font-size: xxx-large;margin-top: 10px;">Find city highlights</h1>
+        <hr />
+      </div>
+
+      <div class="row">
+        <div id="description"  style="float: left;">
+          <span *ngIf="searchText=== 'Amusement' " style="float: left;">
+            <h4>Look for activities happening around you at various venues. Going out and venturing shall help having a better impact on your 
+              health while allowing you to gain new experiences. </h4>
+          </span>
+          
+          <span *ngIf="searchText=== 'Bar' " style="float: left;">
+            <h4>Venture out to your local bar. Get an experience outside of what you’re used to. Get a pint to drink, a cocktail to enjoy and 
+              a good night to spend. Come with your mates or find new friendships along the way. Refresh, relax and enjoy while garnering new 
+              experiences and friendships along the way.</h4>
+          </span>
+
+          <span *ngIf="searchText=== 'Cafes and Restaurants' " style="float: left;">
+            <h4>Good cup of coffee and great meal can go a long way in nurturing your soul. Find a café or a restaurant near you and venture 
+              out. Get lucky, find new friendships over a cup of coffee or tea. Have a comforting meal or try a new cuisine and push yourself towards 
+              new adventures. Food is the gateway to feeling good!</h4>
+          </span>
+
+          <span *ngIf="searchText=== 'Church' " style="float: left;">
+            <h4>What can you expect when you arrive at Enjoy Church Melbourne City? Well, like with all the other Enjoy locations, you can 
+              expect to meet a vibrant Christian Church with a strength in and passion for relationship.</h4>
+          </span>
+
+          <span *ngIf="searchText=== 'Library' " style="float: left;">
+            <h4>Pick a book, gain an interest or just merely browse through. A library is a perfect place where you can get in touch with the community 
+              you reside in. Pick up on activities, a volunteer program or just find peers that have mutual understandings. Find a nearest library to enrich your 
+              mind and soul.</h4>
+          </span>
+
+          <span *ngIf="searchText=== 'Museum' " style="float: left;">
+            <h4>Experience history like never before or get up close and personal with artworks. Museums of all kinds are a treasure of the 
+              past to be cherished. Did you know visiting a museum as our age increases allows a decrease in hypertension and an increase in more 
+              cognitive and physical functions? Find a museum near you and enrich your life while improving your mental health. </h4>
+          </span>
+
+          <span *ngIf="searchText=== 'Performance space' " style="float: left;">
+            <h4>Find a space near you with your mutual interests. Look for activities happening around you at performance spaces. Going out and 
+              venturing shall help having a better impact on your health. An increased sense of purpose and value shall ignite within you while 
+              giving way to reduction in loneliness and anxieties. Find performance spaces near you and go for an adventure you’ve never been on before. </h4>
+          </span>
+
+          <span *ngIf="searchText=== 'Theatre' " style="float: left;">
+            <h4>Theatres are a great way to improve your social interactions and your overall mental health. They give way to new perspectives 
+              to be viewed, enjoyed and pondered upon. Find a theatre nearest you and go catch a play or take upon acting classes to express your 
+              inner feelings. This shall allow cognition to improve while making it easier to express your emotions.</h4>
+          </span>
+
+          <span *ngIf="searchText=== 'Venue' " style="float: left;">
+            <h4>Find a space near you with your mutual interests. Look for activities happening around you at various venues. Going out and 
+              venturing shall help having a better impact on your health. An increased sense of purpose and value shall ignite within you while 
+              giving way to reduction in loneliness and anxieties. Find venues near you and go for an adventure you’ve never been on before. 
+            </h4>
+          </span>
+        </div>
+      </div>
+      
+
+
+        
+
+      <br />
+      <br />
+      
+      <hr />
+
+      
+
+      <div class="row">
+        <br />
+        <br />
+
+        <!--description -->
+        
+
+        <!--card -->
+        <div class="col-sm-4">
+          <div class="card" style="overflow: scroll;overflow-x: hidden;height: 450px;">
+            
+            <!-- <div class="card-body"   > -->
+              <div class="list-group" *ngFor="let quote of quotes | filter: searchText ">
+
+                <a class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ quote.venue_name }}</h5>
+                    <!-- <small>3 days ago</small> -->
+                  </div>
+                  <p class="mb-1">Address: {{quote.venue_address}}</p>
+                  <small><a href="https://www.google.com/maps/place/{{quote.venue_address}}">Show on the map</a ></small>
+                </a>
+
+                <!-- <h4 class="mb-1"></h4>
+              
+                <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: large;"><b
+                    style="font-size: larger;">Address: </b> {{ quote.venue_address }}</span>
+                <br />
+                <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: large;"><b
+                    style="font-size: larger;">Space Type: </b>{{ quote.space_type }}</span>
+                <br />
+                <a href="https://www.google.com/maps/place/{{quote.venue_address}}">Show on the map</a > -->
+              </div>
+              
+              
+            <!-- </div> -->
+            
+          </div>
+        </div>
+        <!--map -->
+        <div class=" col-sm-7">
+          <div class="agm-map">
+            <agm-map style="width:100%;height:500px;" [latitude]="latitude" [longitude]="longitude">
+              <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+                <agm-marker *ngFor="let quote of quotes | filter:searchText" [title]="quote.venue_address" [latitude]="quote.Y" [longitude]="quote.X">
+                  <agm-info-window #infowindow>
+                    <strong>{{ quote.venue_name }}</strong>
+                    <tr>
+                    <a href="https://www.google.com/maps/place/{{quote.venue_address}}">Show on the map</a >
+                    </tr>
+                  </agm-info-window>
+                </agm-marker>
+              </agm-marker-cluster>
+            </agm-map>
+          </div>
+        </div>
+        <br />
+        <br />
+       
+      </div>
+     
+
+      <hr/>
+      
+    </div>
+</div>

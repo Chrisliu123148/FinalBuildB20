@@ -1,0 +1,221 @@
+<div class="include_search"     style="background-image: url('../../assets/recreational/sport-background.jpg');background-size: cover;background-attachment: fixed;height: 500px;">
+
+  <div class="text-align" >
+    <div class="row" ><br/><br/><br/><br/><br/><br/><br/></div>
+    <div class="row d-flex justify-content-center" >
+
+      <div class="col-md-8" >
+        <select [(ngModel)]="searchText"
+          style="float: left;width: 49%;height: 50px;border-radius: 5px;font-size:large; font-family: Arial, Helvetica, sans-serif;">
+          <option value="" disabled selected>Select a Category</option>
+          <option *ngFor="let quo of quote" [value]="quo" style="font-size: larger;">{{ quo }}</option>
+        </select> 
+      
+      
+        <input #inp type="text"  maxlength="4" (keyup)="onKey(inp.value)" [(ngModel)]="searchPost" placeholder="Enter Postcode"
+          style="float: right;width: 49%;height: 50px;border-radius: 5px;font-size:large; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" />
+      
+
+      </div>
+      <div class="col-md-1">
+      <button
+        style="height: 50px; width: 100px;font-size: x-large;font-weight: bold;margin-left: 5px;border-radius: 5px;background-color: paleturquoise;"
+        (click)="reset()">Reset</button></div>
+
+    </div>
+  </div>
+  <!-- <h4 class="font-weight-bold card-title">
+    STAY FIT, STAY HEALTHY! FLEX YOUR MUSCLES, MOVE THOSE LEGS AND CHURN A SWEAT.
+    Regular exercise can keep you fit and help you stay independent as you age. Interact with like minded individuals and start improving your body, mind and soul! Find the nearest sport center near you:
+
+  </h4> -->
+</div>
+  
+  
+<div id=root>
+<div class="container">
+<div class="row">
+  <h1 class="font-weight-bold card-title">Find your interest</h1>
+  
+  <hr />
+
+
+
+
+  
+  
+  <br />
+  <br />
+  <!--<h1 style="font-family: serif; font-size: xxx-large;margin-top: 50px;">Search Result</h1>-->
+  
+  <div  style="margin-top:150px;text-align:center" *ngIf="(quotes | filter:searchText | filter:searchPost).length==0 "  >
+    
+    <h1 style="text-align:center" >Sorry, we could not find a suitable activity for this selection, please choose again!</h1>
+    
+  </div>
+  <div *ngIf="quotes">
+    <div id="description"  style="float: left;">
+      <span *ngIf="searchText=== 'Aerobics' " style="float: left;">
+        <h4>Take a chance at aerobics and see your body and mind significantly improve and become healthy. Aerobics improves your cardiovascular 
+          health and reduces medical conditions pertaining to the heart.It aids towards an improvement of sleep, reduction in chronic pain and 
+          strengthening the immune system. Take on aerobics and see your weight get regulated too!
+        </h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Badminton' && (quotes | filter:searchText | filter:searchPost).length > 0  " style="float: left;">
+        <h4>Swing the racket and feel that energy enter your body! Badminton improves your hand-eye coordination and allows you achieve a better footing on
+           where ever you stand. It strengthens the heart muscles and allows a more efficient blood circulation to occur. Swinging the racket shall also allow
+            you to reduce your cholesterol levels and unclog those arterial walls. </h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Calisthenics' && (quotes | filter:searchText | filter:searchPost).length > 0 " style="float: left;">
+        <h4>Perform some calisthenics and feel the change in you. Did you know that calisthenics stimulates your muscle growth and allows to build endurance 
+          and strength? Taking on some light calisthenics’ exercises can help boost your mental and physical strength. It can help you gain some clarity of mind 
+          by sweating out. Take these calisthenics exercises slowly and work your way up and see the change happening.</h4>
+      </span>
+      
+      <span *ngIf="searchText=== 'Cycling' && (quotes | filter:searchText | filter:searchPost).length > 0 " style="float: left;">
+        <h4>Feel the breeze, meet new people and work that pedal. Take on cycling now and witness your surroundings like never before. Cycling is a good form of 
+          exercise that can allow you to reduce your chances of heart attacks, strokes and other serious medical conditions. Cycling has an overall positive affect 
+          on your heart and reduces cardiovascular diseases too.</h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Dancing' && (quotes | filter:searchText | filter:searchPost).length > 0 " style="float: left;">
+        <h4>Work that charisma and take those steps. Shake your body and feel good. Our research has found that dancing allows an improvement in balance and 
+          flexibility of your body. As you enjoy and move to the tunes, you are also improving your health while doing so. Dancing also decreases your chance of 
+          cardiovascular diseases. </h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Fitness' && (quotes | filter:searchText | filter:searchPost).length > 0 " style="float: left;">
+        <h4>You are only as good as you feel. Work those muscles and break a sweat. A refreshed body translates into a refreshed mind. Take small steps, start a 
+          fitness routine and join a gym. Decrease your risk of falls, improve your cognitive functions and increase your social interactions. </h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Golf' && (quotes | filter:searchText | filter:searchPost).length > 0 " style="float: left;">
+        <h4>Did you know playing golf releases endorphins, the feel-good hormones? Practice that swing and work on that stroke while keeping your mind refreshed. 
+          Golf helps you break a sweat and burn calories. It involves a lot of walking besides just practicing on your swing. Golf allows you build muscle 
+          strength, increase your endurance and improve your cardiovascular health.</h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Martial Arts' && (quotes | filter:searchText | filter:searchPost).length > 0 " style="float: left;">
+        <h4>Great cardio that uses your entire body without you lifting weights. Improve your flexibility, coordination and overall stamina. Martial art allows you 
+          to work on those lean muscle mass which is especially needed as our bodies age. Martial art also improves your mobility of the overall body. </h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Snooker' && (quotes | filter:searchText | filter:searchPost).length > 0" style="float: left;">
+        <h4>The famous cue sport. Try your luck at the sport now, pot some balls and gain new friendships. Take on a game of snooker and improve your focus and 
+          concentration. Snooker also allows to enable stretching and flexibility while the game is being played. The mind is also sharpened as one plays the game.
+           Relax yourself while working those muscles, take on the sport now. 
+        </h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Swimming' && (quotes | filter:searchText | filter:searchPost).length > 0 " style="float: left;">
+        <h4>Embrace the water and dive in! Feel good and try swimming a lap or merely float. Swimming allows you to 
+          improve your heart muscles while making your overall body feel energized and stronger than before. Its great for elderlies 
+          as it improves flexibility and is easy on the joints. Reducing osteoporosis and boosting mental health is a perk of swimming too.
+        </h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Ten Pin Bowling' && (quotes | filter:searchText | filter:searchPost).length > 0" style="float: left;">
+        <h4>A fun activity that allows you to mingle around and gain more social interactions while working on your 
+          body. Try a game of bowling and improve your overall health. Bowling allows your muscles to be stretched 
+          and build muscle mass. Burn calories, improve hand eye coordination and your overall balance while having fun at the same time. 
+        </h4>
+      </span>
+
+      <span *ngIf="searchText=== 'Tennis' && (quotes | filter:searchText | filter:searchPost).length > 0 " style="float: left;">
+        <h4>It’s never too late to take up tennis and you’re never alone! Flex those muscles and go at your own pace. Play gentle games based 
+          on your energy levels and improve both your mind and body. Playing tennis improves your hand-eye coordination and allows you to achieve a firm footing 
+          on where ever you stand. It strengthens the heart muscles and allows a more efficient blood circulation to occur. Swinging 
+          the racket shall also allow you to reduce your cholesterol levels and unclog those arterial walls.
+        </h4>
+      </span>
+
+    </div>
+
+
+
+    <br />
+    <br />
+
+
+    <!--Section: articles-->
+    <section id="articles" class="text-center py-5">
+
+      <!-- Container -->
+      <div class="container">
+
+          <!-- Section heading -->
+          
+
+          <!--Grid row-->
+          <div class="row" >
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-12 mb-4" *ngFor="let quote of collection.data  | filter:searchText | filter:searchPost  | paginate: config  ">
+
+                  <!-- Card Narrower -->
+                  <div class="card card-cascade wider text-left" >
+
+                        <!-- Card image -->
+                      <div class="view overlay">
+                          <img class="card-img-top" src="../../assets/recreational/{{ quote.SportsPlayed }}.jpg"
+                              alt="Card image cap">
+                          <a>
+                            <div class="mask rgba-white-slight"></div>
+                          </a>
+                          
+                          
+                          
+                      </div>
+
+                      <!-- </div> -->
+
+                      <!-- Card content -->
+                      <div class="card-body">
+
+                          <!-- Label -->
+                          <!-- <h5 class="card-title" >{{ quote.FacilityName}}</h5> -->
+                          <!-- Title -->
+                          <h4 class="card-title" style="color:navy;">{{ quote.FacilityName}}</h4>
+                          <!-- <h4 class="font-weight-bold card-title">Postcode: {{ quote.Postcode_x }}</h4> -->
+                          <!-- Text -->
+                          <p class="card-text" >Postcode: {{ quote.Postcode_x }}</p>
+                          <p class="card-text" >Suburb: {{ quote.Suburb }}</p>
+                          <p class="card-text" >Sports Played: {{ quote.SportsPlayed }}</p>
+                        
+                          <a href="https://www.google.com/maps/place/{{quote.StreetNo}}+{{quote.StreetName}}+{{quote.StreetType}}+{{quote.Suburb}}" class="card-link">Show on the map</a>
+                          <!-- Button -->
+                          <!-- <a href="/recreational" class="btn btn-primary">Find out</a> -->
+
+                      </div>
+
+                  </div>
+                  <!-- Card Narrower -->
+
+              </div>
+              <!--Grid column-->
+
+
+          </div>
+          <!--Grid row-->
+
+      </div>
+      <!-- Container -->
+
+    </section>
+  <!--Section: articles-->
+
+
+  <pagination-controls (pageChange)="pageChanged($event)" ></pagination-controls>
+
+        
+
+
+
+
+  </div>
+</div>
+
+</div>
+</div>
